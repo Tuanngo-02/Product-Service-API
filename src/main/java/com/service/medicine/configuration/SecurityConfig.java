@@ -17,9 +17,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableMethodSecurity
 public class SecurityConfig {
-    private static final String [] PUBLIC_ENDPOINS = {"/users", "/auth/login",
+    private static final String [] PUBLIC_ENDPOINS_POST = {"/users", "/auth/login",
             "/roles",
             "/auth/logout", "/auth/introspect", "auth/refresh"};
+    private static final String [] PUBLIC_ENDPOINS_GET = {"/products"};
 
     @Value("${jwt.signerKey}")
     private String singerKey;
@@ -31,7 +32,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(request ->
-                request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINS).permitAll()//cho phép truy cập
+                request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINS_POST).permitAll()//cho phép truy cập
+                        .requestMatchers(HttpMethod.GET, PUBLIC_ENDPOINS_GET).permitAll()
 //                        .hasAuthority("SCOPE_ADMIN")//chỉ token chua admin mới truy cập vào point get-users
 //                        .hasRole(Role.ADMIN.toString())
                         .anyRequest().authenticated());//còn lại phải xác thực

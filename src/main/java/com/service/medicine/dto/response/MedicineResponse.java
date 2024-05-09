@@ -20,8 +20,6 @@ public class MedicineResponse {
 
     int availableQuantity;
 
-    String category;
-
     String description;
 
     LocalDate dob;

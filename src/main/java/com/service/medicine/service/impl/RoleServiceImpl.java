@@ -38,6 +38,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('SCOPE_ROLE_ADMIN')")//TẠO CHỐT CHẶN có role admin ms vào đc phương thức
     public List<RoleResponse> getAllRole() {
         return roleRepository.findAll().stream().map(roleMapper::toRoleResponse).toList();
     }
