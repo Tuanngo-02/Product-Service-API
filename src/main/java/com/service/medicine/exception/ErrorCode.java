@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatusCode;
 
 @Getter
 public enum ErrorCode  {
-//    UNCATEGORIZED_EXCEPTION(9999,"UNCATEGORIZED_EXCEPTION",
-//            HttpStatus.INTERNAL_SERVER_ERROR),//lỗi ko xác định đc(lỗi 500)
+    UNCATEGORIZED_EXCEPTION(9999,"UNCATEGORIZED_EXCEPTION",
+            HttpStatus.INTERNAL_SERVER_ERROR),//lỗi ko xác định đc(lỗi 500)
     //lỗi HttpStatus.BAD_REQUEST (lỗi 400 = do người dùng nhập input)
     PASSWORD_ERROR(1004, "Mât khẩu trên {min} chữ số",HttpStatus.BAD_REQUEST),
     INVALID_KEY(1000,"sai tên key enums", HttpStatus.BAD_REQUEST),

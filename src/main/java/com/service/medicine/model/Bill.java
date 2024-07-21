@@ -27,6 +27,9 @@ public class Bill {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Cart.class)
     @JoinColumn(name = "bill_id", referencedColumnName = "id")
+//    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL) // Quan hệ 1-n với đối tượng ở dưới (Person) (1 địa điểm có nhiều người ở)
+//    // MapopedBy trỏ tới tên biến Address ở trong Person.
+//@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bill")
     List<Cart> cartItems;
 
     public Bill(String orderDescription, User user, List<Cart> cartItems) {

@@ -15,6 +15,8 @@ import com.service.medicine.service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -53,8 +55,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @PreAuthorize("hasAuthority('SCOPE_ROLE_ADMIN')")//TẠO CHỐT CHẶN có role admin ms vào đc phương thức
-    public List<UserResponse> getUser() {
-        return userRepository.findAll().stream().map(userMapper::toUserResponse).toList();
+    public Page<UserResponse> getUser(Pageable pageable) {
+        return userRepository.findAll(pageable).map(userMapper::toUserResponse);
     }
 
     @Override

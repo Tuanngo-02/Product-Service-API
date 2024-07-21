@@ -1,10 +1,10 @@
 package com.service.medicine.reponsitory;
 
-import com.service.medicine.model.Medicine;
+import com.service.medicine.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MedicineRepository extends JpaRepository<Medicine, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
     boolean existsByName (String name);
 }

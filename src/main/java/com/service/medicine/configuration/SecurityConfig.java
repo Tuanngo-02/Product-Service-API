@@ -34,6 +34,7 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests(request ->
                 request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINS_POST).permitAll()//cho phép truy cập
                         .requestMatchers(HttpMethod.GET, PUBLIC_ENDPOINS_GET).permitAll()
+                        .requestMatchers("/swagger-ui/**","/swagger-ui.html","/v3/api-docs/**").permitAll()
 //                        .hasAuthority("SCOPE_ADMIN")//chỉ token chua admin mới truy cập vào point get-users
 //                        .hasRole(Role.ADMIN.toString())
                         .anyRequest().authenticated());//còn lại phải xác thực

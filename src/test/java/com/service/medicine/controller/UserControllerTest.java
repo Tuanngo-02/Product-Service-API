@@ -23,6 +23,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.embedded.netty.NettyWebServer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
@@ -98,7 +100,7 @@ class UserControllerTest {
         String content = objectMapper.writeValueAsString(response);
 
         List<UserResponse> userResponses = new ArrayList<>();
-        Mockito.when(userService.getUser()).thenReturn(userResponses);
+        Mockito.when(userService.getUser(PageRequest.of(0,5))).thenReturn((Page<UserResponse>) userResponses.stream().toList());
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/users")
