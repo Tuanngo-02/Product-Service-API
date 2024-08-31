@@ -26,4 +26,8 @@ public class Product {
     String description;
 
     LocalDate dob;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }

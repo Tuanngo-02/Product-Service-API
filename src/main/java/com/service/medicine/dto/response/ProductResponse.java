@@ -21,5 +21,7 @@ public class ProductResponse {
 
     String description;
 
+    String category;
+
     LocalDate dob;
 }

@@ -1,10 +1,13 @@
 package com.service.medicine.service.impl;
 
 import com.service.medicine.dto.request.ProductRequest;
+import com.service.medicine.dto.response.CategoryResponse;
 import com.service.medicine.dto.response.ProductResponse;
 import com.service.medicine.exception.AppException;
 import com.service.medicine.exception.ErrorCode;
 import com.service.medicine.mapper.ProductMapper;
+import com.service.medicine.mapper.SubProductMapper;
+import com.service.medicine.model.Category;
 import com.service.medicine.model.Product;
 import com.service.medicine.reponsitory.ProductRepository;
 import com.service.medicine.service.ProductService;
@@ -15,8 +18,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -26,18 +27,26 @@ public class ProductServiceImpl implements ProductService {
 
     ProductMapper productMapper;
 
+    CategoryServiceImpl categoryService;
+
+    SubProductMapper subProductMapper;
+
     @Override
     public ProductResponse createMedicine(ProductRequest request) {
         if (productRepository.existsByName(request.getName()))
             throw new AppException(ErrorCode.MEDICINE_EXISTED);
-        var medicine = productMapper.toMedicine(request);
-
-        return productMapper.toMedicineResponse(productRepository.save(medicine));
+        CategoryResponse category = categoryService.getCategoryByCode(request.getCategory());
+        Category categories = new Category();
+        categories.setCode(category.getCode());
+        categories.setName(category.getName());
+        Product product = subProductMapper.productRequestMapperSub(request, categories);
+        return subProductMapper.productResponseMapperSub(productRepository.save(product));
     }
 
     @Override
     public Page<ProductResponse> getAllMedicine(Pageable pageable) {
-        return productRepository.findAll(pageable).map(productMapper::toMedicineResponse);
+        Page<Product> products = productRepository.findAll(pageable);
+        return products.map(subProductMapper::productResponseMapperSub);
     }
 
     @Override
@@ -45,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.MEDICINE_NOT_EXISTED));
 
         productMapper.updateMedicine(product, request);
-        return productMapper.toMedicineResponse(productRepository.save(product));
+        return subProductMapper.productResponseMapperSub(productRepository.save(product));
     }
 
     @Override

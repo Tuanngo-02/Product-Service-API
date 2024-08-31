@@ -1,7 +1,6 @@
 package com.service.medicine.service;
 
 import com.service.medicine.model.Bill;
-import com.service.medicine.model.Cart;
 
 public interface BillService {
     Bill getBillDetail(Long id);

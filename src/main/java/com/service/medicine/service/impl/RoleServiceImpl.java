@@ -11,12 +11,10 @@ import com.service.medicine.service.RoleService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +42,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('SCOPE_ROLE_ADMIN')")//TẠO CHỐT CHẶN có role admin ms vào đc phương thức
     public void deleteRole(String name) {
         roleRepository.deleteById(name);
     }

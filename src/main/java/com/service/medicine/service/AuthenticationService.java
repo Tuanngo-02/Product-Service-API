@@ -6,7 +6,6 @@ import com.service.medicine.dto.request.IntrospectRequest;
 import com.service.medicine.dto.request.LogoutRequest;
 import com.service.medicine.dto.response.AuthenticationResponse;
 import com.service.medicine.dto.response.IntrospectResponse;
-import com.service.medicine.model.InvalidatedToken;
 import com.service.medicine.model.User;
 
 import java.text.ParseException;

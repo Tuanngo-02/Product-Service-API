@@ -17,4 +17,4 @@ jwt:
   signerKey: "1TjXchw5FloESb63Kc+DFhTARvpWL4jUGCwfGWxuG5SIf/1y/LgJxHnMqaF6A/ij"
 open:
   api:
-    title: Medicine-Service-API Document
+    title: E-commerce_Service API Document

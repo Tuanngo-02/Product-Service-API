@@ -2,7 +2,6 @@ package com.service.medicine.service.impl;
 
 import com.service.medicine.exception.AppException;
 import com.service.medicine.exception.ErrorCode;
-import com.service.medicine.mapper.UserMapper;
 import com.service.medicine.model.Bill;
 import com.service.medicine.model.Cart;
 import com.service.medicine.model.Product;
@@ -32,8 +31,6 @@ public class BillServiceImpl implements BillService {
     CartRepositoy cartRepositoy;
     ProductRepository productRepository;
     UserRepository userRepository;
-    UserMapper userMapper;
-
     @Override
     public Bill getBillDetail(Long id) {
         Optional<Bill> bill = billReponsitory.findById(id);
@@ -60,15 +57,6 @@ public class BillServiceImpl implements BillService {
 
         return bill.isPresent() ? bill.get() : null;
     }
-
-//    @Override
-//    public Bill updateBill(String userId, List<Cart> carts) {
-//        Optional<Bill> bill1 = billReponsitory.findByUserId(userId);
-//        bill1.setCartItems(bill.getCartItems());
-//        bill1.setOrderDescription(bill.getOrderDescription());
-//
-//        return billReponsitory.save(bill1);
-//    }
 
     public float getCartAmount(List<Cart> carts){
         float totalCartAmount = 0f;
@@ -107,24 +95,16 @@ public class BillServiceImpl implements BillService {
                 Optional<Product> medicine = productRepository.findById(existingCart.getMedicineId());
                 if (Objects.equals(cart.getMedicineId(), existingCart.getMedicineId()) && medicine.isPresent()){
                     Product product1 = medicine.get();
-                    log.info(String.valueOf(cart.getMedicineId()));
                     if (cart.getQuantity() > existingCart.getQuantity()){
                         x = cart.getQuantity() - existingCart.getQuantity();
-                        log.info(String.valueOf(x));
                         singleCartAmount = cart.getQuantity() * product1.getPrice();
-                        log.info(String.valueOf(singleCartAmount));
                         availableQuantity = product1.getAvailableQuantity() - x ;
-                        log.info(String.valueOf(availableQuantity));
                     }else {
                         x = existingCart.getQuantity() - cart.getQuantity();
-                        log.info(String.valueOf(x));
                         singleCartAmount = cart.getQuantity() * product1.getPrice();
-                        log.info(String.valueOf(singleCartAmount));
                         availableQuantity = product1.getAvailableQuantity() + x;
-                        log.info(String.valueOf(availableQuantity));
                     }
                     totalCartAmount = totalCartAmount + singleCartAmount;
-                    log.info(String.valueOf(totalCartAmount));
                     product1.setAvailableQuantity(availableQuantity);
                     existingCart.setQuantity(cart.getQuantity());
                     cartRepositoy.save(existingCart);
@@ -135,38 +115,4 @@ public class BillServiceImpl implements BillService {
         }
         return totalCartAmount;
     }
-//    public float getCartAmountAfterUpdate(List<Cart> carts, String userId){
-//        Bill bill = getMyBill();
-//        Bill bill1 = billReponsitory.findByUserId(userId).orElseThrow(() -> new AppException(ErrorCode.UNAUTHENTICATED));
-//        Cart cart1 = cartRepositoy.findByBillId(bill1.getId()).orElseThrow(() -> new AppException(ErrorCode.UNAUTHENTICATED));
-////        Optional<Cart> cart_2 = cartRepositoy.findByBillId(bill.getId());
-////        cart_2.get().getMedicineId();
-//        int x =0 ;
-//        int y;
-//        int availableQuantity = 0;
-//        float singleCartAmount = 0f;
-//        float totalCartAmount = 0f;
-//        for (Cart cart : carts){
-//            Long medicineId = cart.getMedicineId();
-//            Optional<Product> medicine = productRepository.findById(medicineId);
-//            if (medicine.isPresent()){
-//                Product product1 = medicine.get();
-//                if (cart1.getQuantity() > cart.getQuantity()){
-//                    x = cart.getQuantity() - cart1.getQuantity();
-//                    singleCartAmount = cart.getQuantity() * product1.getPrice();
-//                    availableQuantity = product1.getAvailableQuantity() - x ;
-//                }else {
-//                    x = cart1.getQuantity() - cart.getQuantity();
-//                    singleCartAmount = cart.getQuantity() * product1.getPrice();
-//                    availableQuantity = product1.getAvailableQuantity() + x;
-//                }
-//                totalCartAmount = totalCartAmount + singleCartAmount;
-//                product1.setAvailableQuantity(availableQuantity);
-//                availableQuantity=0;
-//                cart.setAmount(singleCartAmount);
-//                productRepository.save(product1);
-//            }
-//        }
-//        return totalCartAmount;
-//    }
 }

@@ -1,7 +1,5 @@
 package com.service.medicine.configuration;
 
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -30,7 +27,7 @@ public class OpenApiConfig {
                 " logout, paging, sorting, ordering, editing placed orders," +
                 " authenticating with JWT token, and endpoint decentralization.")
                 .license(new License().name("API license").url(""))
-                ).servers(List.of(new Server().url("http://localhost:8080/medicine").description("name service")))
+                ).servers(List.of(new Server().url("http://localhost:8080/medicine").description("Main server")))
                 .components(
                         new Components().addSecuritySchemes(
                                 "bearerAuth",new SecurityScheme()
