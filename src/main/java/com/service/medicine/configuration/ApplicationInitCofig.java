@@ -19,6 +19,7 @@
 //
 //@Configuration
 //@Slf4j
+////trong csdl phải có role : ADMIN mới khởi tạo được!!!
 //public class ApplicationInitCofig {
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;

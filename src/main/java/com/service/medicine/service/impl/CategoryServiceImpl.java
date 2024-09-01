@@ -36,13 +36,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponse getCategoryByCode(String code) {
-        Category categories = categoryReponsitory.findById(code).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+        Category categories = categoryReponsitory.findById(code).orElseThrow(() -> new AppException(ErrorCode.CATEGORY_NOT_EXISTED));
         return categoryMapper.toCategoryResponse(categories);
     }
 
     @Override
     public CategoryResponse updateCategory(String code, CategoryRequest request) {
-        Category category = categoryReponsitory.findByCode(code).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+        Category category = categoryReponsitory.findByCode(code).orElseThrow(() -> new AppException(ErrorCode.CATEGORY_NOT_EXISTED));
 
         categoryMapper.updateCategory(category, request);
 

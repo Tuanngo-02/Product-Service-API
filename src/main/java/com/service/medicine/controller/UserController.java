@@ -7,6 +7,7 @@ import com.service.medicine.dto.response.UserResponse;
 import com.service.medicine.service.impl.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,8 +31,10 @@ public class UserController {
     private final String DEFAULT_SORT_BY = "firstName";
     @Operation(summary = "Create new User", description = "Send a request via this API to create new user")
     @PostMapping
-    ApiResponse<UserResponse> createUser(@RequestBody UserCreationRequest request){
+    ApiResponse<UserResponse> createUser(@Valid @RequestBody UserCreationRequest request){
         return ApiResponse.<UserResponse>builder()
+                .message("create user success")
+                .code(HttpStatus.CREATED.value())
                 .result(userService.createUser(request))
                 .build();
     }

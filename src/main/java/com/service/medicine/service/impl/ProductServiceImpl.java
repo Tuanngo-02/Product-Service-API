@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponse createMedicine(ProductRequest request) {
         if (productRepository.existsByName(request.getName()))
-            throw new AppException(ErrorCode.MEDICINE_EXISTED);
+            throw new AppException(ErrorCode.PRODUCT_EXISTED);
         CategoryResponse category = categoryService.getCategoryByCode(request.getCategory());
         Category categories = new Category();
         categories.setCode(category.getCode());
@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse updateMedicine(Long id, ProductRequest request) {
-        Product product = productRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.MEDICINE_NOT_EXISTED));
+        Product product = productRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_EXISTED));
 
         productMapper.updateMedicine(product, request);
         return subProductMapper.productResponseMapperSub(productRepository.save(product));
