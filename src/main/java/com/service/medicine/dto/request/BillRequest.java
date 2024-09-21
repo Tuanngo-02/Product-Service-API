@@ -1,13 +1,11 @@
 package com.service.medicine.dto.request;
 
+import java.util.List;
+
 import com.service.medicine.model.Cart;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
 
 @Data
 @Builder

@@ -1,5 +1,9 @@
 package com.service.medicine.service.impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 import com.service.medicine.dto.request.ProductRequest;
 import com.service.medicine.dto.response.CategoryResponse;
 import com.service.medicine.dto.response.ProductResponse;
@@ -11,12 +15,10 @@ import com.service.medicine.model.Category;
 import com.service.medicine.model.Product;
 import com.service.medicine.reponsitory.ProductRepository;
 import com.service.medicine.service.ProductService;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -33,8 +35,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse createMedicine(ProductRequest request) {
-        if (productRepository.existsByName(request.getName()))
-            throw new AppException(ErrorCode.PRODUCT_EXISTED);
+        if (productRepository.existsByName(request.getName())) throw new AppException(ErrorCode.PRODUCT_EXISTED);
         CategoryResponse category = categoryService.getCategoryByCode(request.getCategory());
         Category categories = new Category();
         categories.setCode(category.getCode());
@@ -51,7 +52,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse updateMedicine(Long id, ProductRequest request) {
-        Product product = productRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_EXISTED));
+        Product product =
+                productRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_EXISTED));
 
         productMapper.updateMedicine(product, request);
         return subProductMapper.productResponseMapperSub(productRepository.save(product));

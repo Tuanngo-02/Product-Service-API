@@ -1,12 +1,13 @@
 package com.service.medicine.service;
 
-import com.service.medicine.dto.request.ProductRequest;
-import com.service.medicine.dto.response.ProductResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.service.medicine.dto.request.ProductRequest;
+import com.service.medicine.dto.response.ProductResponse;
+
 public interface ProductService {
-    ProductResponse createMedicine (ProductRequest request);
+    ProductResponse createMedicine(ProductRequest request);
 
     Page<ProductResponse> getAllMedicine(Pageable pageable);
 

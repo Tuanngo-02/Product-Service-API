@@ -1,5 +1,12 @@
 package com.service.medicine.service.impl;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
 import com.service.medicine.exception.AppException;
 import com.service.medicine.exception.ErrorCode;
 import com.service.medicine.model.Bill;
@@ -11,16 +18,11 @@ import com.service.medicine.reponsitory.CartRepositoy;
 import com.service.medicine.reponsitory.ProductRepository;
 import com.service.medicine.reponsitory.UserRepository;
 import com.service.medicine.service.BillService;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,13 +33,14 @@ public class BillServiceImpl implements BillService {
     CartRepositoy cartRepositoy;
     ProductRepository productRepository;
     UserRepository userRepository;
+
     @Override
     public Bill getBillDetail(Long id) {
         Optional<Bill> bill = billReponsitory.findById(id);
-        for (Cart cart : bill.get().getCartItems()){
+        for (Cart cart : bill.get().getCartItems()) {
             log.info(String.valueOf(cart.getId()));
         }
-        return bill.isPresent()? bill.get() : null;
+        return bill.isPresent() ? bill.get() : null;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class BillServiceImpl implements BillService {
         return bill.isPresent() ? bill.get() : null;
     }
 
-    public float getCartAmount(List<Cart> carts){
+    public float getCartAmount(List<Cart> carts) {
         float totalCartAmount = 0f;
         float singleCartAmount = 0f;
         int availableQuantity = 0;
@@ -76,7 +79,7 @@ public class BillServiceImpl implements BillService {
                 }
                 totalCartAmount = totalCartAmount + singleCartAmount;
                 product1.setAvailableQuantity(availableQuantity);
-                availableQuantity=0;
+                availableQuantity = 0;
                 cart.setMedicineName(product1.getName());
                 cart.setAmount(singleCartAmount);
                 productRepository.save(product1);
@@ -84,22 +87,23 @@ public class BillServiceImpl implements BillService {
         }
         return totalCartAmount;
     }
-    public float getCartAmountAfterUpdate(List<Cart> newCartItems, String userId){
+
+    public float getCartAmountAfterUpdate(List<Cart> newCartItems, String userId) {
         int availableQuantity = 0;
         float singleCartAmount = 0f;
         float totalCartAmount = 0f;
         int x = 0;
         Optional<Bill> bill1 = billReponsitory.findByUserId(userId);
-        for (Cart cart : newCartItems){
-            for (Cart existingCart: bill1.get().getCartItems()){
+        for (Cart cart : newCartItems) {
+            for (Cart existingCart : bill1.get().getCartItems()) {
                 Optional<Product> medicine = productRepository.findById(existingCart.getMedicineId());
-                if (Objects.equals(cart.getMedicineId(), existingCart.getMedicineId()) && medicine.isPresent()){
+                if (Objects.equals(cart.getMedicineId(), existingCart.getMedicineId()) && medicine.isPresent()) {
                     Product product1 = medicine.get();
-                    if (cart.getQuantity() > existingCart.getQuantity()){
+                    if (cart.getQuantity() > existingCart.getQuantity()) {
                         x = cart.getQuantity() - existingCart.getQuantity();
                         singleCartAmount = cart.getQuantity() * product1.getPrice();
-                        availableQuantity = product1.getAvailableQuantity() - x ;
-                    }else {
+                        availableQuantity = product1.getAvailableQuantity() - x;
+                    } else {
                         x = existingCart.getQuantity() - cart.getQuantity();
                         singleCartAmount = cart.getQuantity() * product1.getPrice();
                         availableQuantity = product1.getAvailableQuantity() + x;

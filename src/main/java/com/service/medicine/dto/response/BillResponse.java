@@ -10,8 +10,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BillResponse {
     float amount;
-     int invoiceNumber;
-     String date;
-     String orderDescription;
-     Long billId;
+    int invoiceNumber;
+    String date;
+    String orderDescription;
+    Long billId;
 }

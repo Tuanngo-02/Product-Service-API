@@ -1,6 +1,7 @@
 package com.service.medicine.model;
 
 import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

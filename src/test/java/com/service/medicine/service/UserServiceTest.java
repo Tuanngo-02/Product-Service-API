@@ -1,11 +1,10 @@
 package com.service.medicine.service;
 
-import com.service.medicine.dto.request.UserCreationRequest;
-import com.service.medicine.dto.request.UserUpdateRequest;
-import com.service.medicine.dto.response.UserResponse;
-import com.service.medicine.model.User;
-import com.service.medicine.reponsitory.UserRepository;
-import com.service.medicine.service.impl.UserServiceImpl;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,18 +15,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import com.service.medicine.dto.request.UserCreationRequest;
+import com.service.medicine.dto.request.UserUpdateRequest;
+import com.service.medicine.dto.response.UserResponse;
+import com.service.medicine.model.User;
+import com.service.medicine.reponsitory.UserRepository;
+import com.service.medicine.service.impl.UserServiceImpl;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -50,8 +46,8 @@ public class UserServiceTest {
     private LocalDate dob;
 
     @BeforeEach
-    void initDate(){
-        dob = LocalDate.of(2004,2,2);
+    void initDate() {
+        dob = LocalDate.of(2004, 2, 2);
         request = UserCreationRequest.builder()
                 .firstName("tuan6")
                 .lastName("tuan6")
@@ -81,32 +77,35 @@ public class UserServiceTest {
                 .dob(dob)
                 .build();
     }
+
     @Test
-    void createUser_validRequest_success(){
-    //given
-        Mockito.when(userRepository.existsByUsername(ArgumentMatchers.anyString())).thenReturn(false);
+    void createUser_validRequest_success() {
+        // given
+        Mockito.when(userRepository.existsByUsername(ArgumentMatchers.anyString()))
+                .thenReturn(false);
         Mockito.when(userRepository.save(ArgumentMatchers.any())).thenReturn(user);
 
-        //when
+        // when
         var response_test = userService.createUser(request);
 
-        //then
+        // then
         Assertions.assertThat(response_test.getId()).isEqualTo("6f77d4fddd93");
         Assertions.assertThat(response_test.getUsername()).isEqualTo("tuan6");
     }
 
     @Test
-    void getUser_valid_success(){
+    void getUser_valid_success() {
         List<User> users = new ArrayList<User>();
 
         Mockito.when(userRepository.findAll()).thenReturn(users);
 
-        List<UserResponse> userResponses = (List<UserResponse>) userService.getUser(PageRequest.of(0,5));
+        List<UserResponse> userResponses = (List<UserResponse>) userService.getUser(PageRequest.of(0, 5));
 
         Assertions.assertThat(userResponses).isEqualTo(users);
     }
+
     @Test
-    void updateUser_valid_success(){
+    void updateUser_valid_success() {
         Mockito.when(userRepository.findById("6f77d4fddd93")).thenReturn(Optional.of(user));
         Mockito.when(userRepository.save(ArgumentMatchers.any())).thenReturn(user);
 
@@ -117,10 +116,9 @@ public class UserServiceTest {
     }
 
     @Test
-    void delete_valid_success(){
+    void delete_valid_success() {
         userService.deleteUser("6f77d4fddd93");
 
         Mockito.doNothing().when(userRepository).deleteById(user.getId());
-
     }
 }

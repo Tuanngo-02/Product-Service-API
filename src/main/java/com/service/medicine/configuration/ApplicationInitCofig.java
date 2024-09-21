@@ -1,26 +1,26 @@
-//package com.service.medicine.configuration;
+// package com.service.medicine.configuration;
 //
-//import com.service.medicine.enums.Roles;
-//import com.service.medicine.model.Role;
-//import com.service.medicine.model.User;
-//import com.service.medicine.reponsitory.UserRepository;
-//import lombok.extern.slf4j.Slf4j;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.ApplicationRunner;
-//import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+// import com.service.medicine.enums.Roles;
+// import com.service.medicine.model.Role;
+// import com.service.medicine.model.User;
+// import com.service.medicine.reponsitory.UserRepository;
+// import lombok.extern.slf4j.Slf4j;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.boot.ApplicationRunner;
+// import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+// import org.springframework.context.annotation.Bean;
+// import org.springframework.context.annotation.Configuration;
+// import org.springframework.security.crypto.password.PasswordEncoder;
 //
-//import java.util.ArrayList;
-//import java.util.HashSet;
-//import java.util.List;
-//import java.util.Set;
+// import java.util.ArrayList;
+// import java.util.HashSet;
+// import java.util.List;
+// import java.util.Set;
 //
-//@Configuration
-//@Slf4j
-////trong csdl phải có role : ADMIN mới khởi tạo được!!!
-//public class ApplicationInitCofig {
+// @Configuration
+// @Slf4j
+//// trong csdl phải có role : ADMIN mới khởi tạo được!!!
+// public class ApplicationInitCofig {
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 //    @Bean
@@ -52,4 +52,4 @@
 //        };
 //    }
 //
-//}
+// }

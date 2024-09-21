@@ -1,6 +1,7 @@
 package com.service.medicine.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -12,5 +13,6 @@ import lombok.experimental.FieldDefaults;
 public class CategoryRequest {
     @NotBlank(message = "NONE_EMPTY")
     String code;
+
     String name;
 }

@@ -12,4 +12,3 @@ public class CategoryResponse {
     String code;
     String name;
 }
-

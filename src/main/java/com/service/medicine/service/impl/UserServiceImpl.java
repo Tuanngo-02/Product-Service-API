@@ -1,5 +1,14 @@
 package com.service.medicine.service.impl;
 
+import java.util.HashSet;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.service.medicine.dto.request.UserCreationRequest;
 import com.service.medicine.dto.request.UserUpdateRequest;
 import com.service.medicine.dto.response.UserResponse;
@@ -12,17 +21,10 @@ import com.service.medicine.model.User;
 import com.service.medicine.reponsitory.RoleRepository;
 import com.service.medicine.reponsitory.UserRepository;
 import com.service.medicine.service.UserService;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
 
 @Service
 @RequiredArgsConstructor
@@ -33,19 +35,16 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
     PasswordEncoder passwordEncoder;
     RoleRepository roleRepository;
+
     @Override
     public UserResponse createUser(UserCreationRequest request) {
-        if (userRepository.existsByUsername(request.getUsername()))
-            throw new AppException(ErrorCode.USER_EXISTED);
+        if (userRepository.existsByUsername(request.getUsername())) throw new AppException(ErrorCode.USER_EXISTED);
         User user = userMapper.toUser(request);
 
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         var role = new HashSet<Role>();
-        role.add(Role.builder()
-                        .name(Roles.USER.name())
-                        .description("user")
-                .build());
+        role.add(Role.builder().name(Roles.USER.name()).description("user").build());
         user.setRoles(role);
         user = userRepository.save(user);
 
@@ -53,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @PreAuthorize("hasAuthority('SCOPE_ROLE_ADMIN')")//TẠO CHỐT CHẶN có role admin ms vào đc phương thức
+    @PreAuthorize("hasAuthority('SCOPE_ROLE_ADMIN')") // TẠO CHỐT CHẶN có role admin ms vào đc phương thức
     public Page<UserResponse> getUser(Pageable pageable) {
         return userRepository.findAll(pageable).map(userMapper::toUserResponse);
     }

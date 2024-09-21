@@ -1,15 +1,16 @@
 package com.service.medicine.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.service.medicine.dto.request.ProductRequest;
 import com.service.medicine.dto.response.ProductResponse;
 import com.service.medicine.model.Category;
 import com.service.medicine.model.Product;
-import org.springframework.stereotype.Component;
 
-//custom mapper product
+// custom mapper product
 @Component
 public class SubProductMapper {
-    public ProductResponse productResponseMapperSub(Product product){
+    public ProductResponse productResponseMapperSub(Product product) {
         ProductResponse productResponse = new ProductResponse();
         productResponse.setId(product.getId());
         productResponse.setName(product.getName());
@@ -24,7 +25,8 @@ public class SubProductMapper {
         productResponse.setDob(product.getDob());
         return productResponse;
     }
-    public Product productRequestMapperSub(ProductRequest product, Category category){
+
+    public Product productRequestMapperSub(ProductRequest product, Category category) {
         Product productRequest = new Product();
         productRequest.setName(product.getName());
         productRequest.setDob(product.getDob());

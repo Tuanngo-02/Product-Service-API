@@ -1,11 +1,12 @@
 package com.service.medicine.model;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -17,5 +18,6 @@ public class InvalidatedToken {
 
     @Id
     String id;
-    Date expiryTime;//thời gian token hết hạn
+
+    Date expiryTime; // thời gian token hết hạn
 }

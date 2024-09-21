@@ -1,11 +1,13 @@
 package com.service.medicine.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
+
 import jakarta.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -27,9 +29,10 @@ public class Bill {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Cart.class)
     @JoinColumn(name = "bill_id", referencedColumnName = "id")
-//    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL) // Quan hệ 1-n với đối tượng ở dưới (Person) (1 địa điểm có nhiều người ở)
-//    // MapopedBy trỏ tới tên biến Address ở trong Person.
-//@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bill")
+    //    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL) // Quan hệ 1-n với đối tượng ở dưới (Person) (1 địa
+    // điểm có nhiều người ở)
+    //    // MapopedBy trỏ tới tên biến Address ở trong Person.
+    // @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bill")
     List<Cart> cartItems;
 
     public Bill(String orderDescription, User user, List<Cart> cartItems) {
