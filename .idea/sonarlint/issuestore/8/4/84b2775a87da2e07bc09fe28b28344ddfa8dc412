@@ -1,0 +1,10 @@
+
+ 	java:S116 "^Rename this field "DEFAULT_PAGE_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¸Ïó8ßœ«Ùš2J$15d8769f-4484-441f-b172-610f637852c8
+£	java:S116!"\Rename this field "DEFAULT_PAGE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¢üøÿÿÿÿ8éœ«Ùš2J$106447ae-58a6-4228-be50-54ca66046fd0
+›	java:S116""ZRename this field "DEFAULT_SORT_BY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óà³z8éœ«Ùš2J$aafd58df-9cf2-48ec-a798-435fa1e8524e
+d
+java:S1170 "!Make this final field static too.(Ÿ¸Ïó8éœ«Ùš2J$9bcb2531-613c-4800-a14b-9950b96381c6
+i
+java:S1170!"!Make this final field static too.(€¢üøÿÿÿÿ8éœ«Ùš2J$06da431d-efc4-4ddb-8783-b02a70da5cba
+c
+java:S1170""!Make this final field static too.(óà³z8éœ«Ùš2J$61f8fd1a-1297-4168-b2af-94d25db3653c

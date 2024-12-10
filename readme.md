@@ -41,5 +41,4 @@
 - Step 3: Pull image medicine-service 
   - ``docker pull thanhtuanhht/medicine-service``
   - ``docker run --name medicine-service -p 8080:8080 -e DBMS_CONNECTION=jdbc:mysql://<change_ipmysql_docker>:3306/medicine_service thanhtuanhht/medicine-service:0.0.1``
-  - 
 - Access http://localhost:8080/medicine/swagger-ui/index.html to see swagger doc

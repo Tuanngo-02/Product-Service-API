@@ -1,0 +1,9 @@
+
+c
+java:S1192""FDefine a constant instead of duplicating this literal "admin" 4 times.(Ğ£å¯8µçÇ²2
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8’µçÇ²2
+z
+java:S3305"XInject this field value directly into "applicationRunner", the only method that uses it.(¿ì§’ıÿÿÿÿ8”µçÇ²2
+X
+java:S6437+"6Revoke and change this password, as it is compromised.(‹ÇôÍøÿÿÿÿ8µµçÇ²2
