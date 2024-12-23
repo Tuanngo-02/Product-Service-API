@@ -1,10 +1,20 @@
 
- 	java:S116"^Rename this field "DEFAULT_PAGE_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¸Ïó8€Ú€Áš2J$cebf3485-86a1-44fa-a036-51e3796aabfd
-£	java:S116"\Rename this field "DEFAULT_PAGE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¢üøÿÿÿÿ8‚Ú€Áš2J$a5857e87-0bcb-4a24-bb1a-24830cffa652
-œ	java:S116"ZRename this field "DEFAULT_SORT_BY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¬ò‹8‚Ú€Áš2J$cd9e6761-913a-4933-b42f-5fd15d6239ef
-d
-java:S1170"!Make this final field static too.(Ÿ¸Ïó8„Ú€Áš2J$c045ca3a-bbdb-4ec1-acf4-b58072ea286d
+¥	java:S116"^Rename this field "DEFAULT_PAGE_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¡Æ®şÿÿÿÿ8€Ú€Áš2J$f5a0d3de-300c-4fb2-b446-7ce74bced165
+	java:S116"\Rename this field "DEFAULT_PAGE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ÆÉ8‚Ú€Áš2J$6d78c201-e7b5-46e8-b05f-a32ef271d1b8
+œ	java:S116"ZRename this field "DEFAULT_SORT_BY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¬ò‹8“ì‚€»2J$3fb7b59c-c7a2-4c40-b6ad-ee3a66e3b034
 i
-java:S1170"!Make this final field static too.(€¢üøÿÿÿÿ8„Ú€Áš2J$4b805e45-2293-47ee-b83d-cb6e968d427e
+java:S1170"!Make this final field static too.(€¡Æ®şÿÿÿÿ8„Ú€Áš2J$661cf166-d9c9-417d-b03e-41e5809532fe
 d
-java:S1170"!Make this final field static too.(Ø¬ò‹8¦Áˆ”¡2J$0780da7c-4153-47bb-b631-3120e22c5270
+java:S1170"!Make this final field static too.(¤ÆÉ8„Ú€Áš2J$e8abd6ab-2ad5-4adb-9364-993042b02bae
+d
+java:S1170"!Make this final field static too.(Ø¬ò‹8“ì‚€»2J$b5affd76-1fac-4036-92e5-c0bca6fa31ae
+‡
+java:S1128"?Remove this unused import 'com.service.medicine.model.Product'.(µæÒøÿÿÿÿ8íÏø»2J$f38651b6-87a0-4a11-931a-43b1629787af
+‰
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8îÏø»2J$79e89236-175e-48d4-97da-a1a78c2d2ace
+‹
+java:S1128"HRemove this unused import 'org.springframework.data.domain.PageRequest'.(ºêâÚ8îÏø»2J$96413b1a-5b97-4543-afa7-07b007122f2e
+
+java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8îÏø»2J$3f3dc4d9-6590-41a2-bbaf-b4435664bcdd
+‰
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Sort'.(ëÿ€ëøÿÿÿÿ8îÏø»2J$e92aadbf-c872-4418-8c84-a280dd976a78

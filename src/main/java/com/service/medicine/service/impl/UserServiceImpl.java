@@ -2,8 +2,11 @@ package com.service.medicine.service.impl;
 
 import java.util.HashSet;
 
+import com.service.medicine.dto.response.PageResponse;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -53,8 +56,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @PreAuthorize("hasAuthority('SCOPE_ROLE_ADMIN')") // TẠO CHỐT CHẶN có role admin ms vào đc phương thức
-    public Page<UserResponse> getUser(Pageable pageable) {
-        return userRepository.findAll(pageable).map(userMapper::toUserResponse);
+    public PageResponse<UserResponse> getUser(int page, int pageSize, String sortBy) {
+        Pageable pageable = PageRequest.of(page-1, pageSize, Sort.by(sortBy));
+        var users = userRepository.findAll(pageable);
+        return PageResponse.<UserResponse>builder()
+                .currentPage(page)
+                .pageSize(users.getSize())
+                .totalElement(users.getTotalElements())
+                .totalPages(users.getTotalPages())
+                .data(users.stream().map(userMapper::toUserResponse).toList())
+                .build();
     }
 
     @Override

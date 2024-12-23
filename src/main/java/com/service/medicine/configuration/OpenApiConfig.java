@@ -28,7 +28,7 @@ public class OpenApiConfig {
                         .title(title)
                         .version("v1.0.0")
                         .description("The service API system includes the functions crud API, login,"
-                                + " logout, paging, sorting, ordering, editing placed orders,"
+                                + " logout, paging, sorting, searching, ordering, editing placed orders,"
                                 + " authenticating with JWT token, and endpoint decentralization.")
                         .license(new License().name("API license").url("")))
                 .servers(List.of(

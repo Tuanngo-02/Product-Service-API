@@ -1,5 +1,6 @@
 package com.service.medicine.controller;
 
+import com.service.medicine.dto.response.PageResponse;
 import jakarta.validation.Valid;
 
 import org.springframework.data.domain.Page;
@@ -29,8 +30,8 @@ import lombok.experimental.FieldDefaults;
 public class UserController {
 
     UserServiceImpl userService;
-    private final String DEFAULT_PAGE_NUMBER = "0";
-    private final String DEFAULT_PAGE_SIZE = "1";
+    private final String DEFAULT_PAGE_NUMBER = "1";
+    private final String DEFAULT_PAGE_SIZE = "2";
     private final String DEFAULT_SORT_BY = "firstName";
 
     @Operation(summary = "Create new User", description = "Send a request via this API to create new user")
@@ -47,13 +48,13 @@ public class UserController {
             summary = "Get list of users per page by Role Admin",
             description = "Send a request via this API to get user list by page and pageSize")
     @GetMapping
-    ApiResponse<Page<UserResponse>> getUser(
+    ApiResponse<PageResponse<UserResponse>> getUser(
             @RequestParam(defaultValue = DEFAULT_PAGE_NUMBER) int page,
             @RequestParam(defaultValue = DEFAULT_PAGE_SIZE) int pageSize,
             @RequestParam(defaultValue = DEFAULT_SORT_BY) String sortBy) {
         Pageable pageable = PageRequest.of(page, pageSize, Sort.by(sortBy));
-        return ApiResponse.<Page<UserResponse>>builder()
-                .result(userService.getUser(pageable))
+        return ApiResponse.<PageResponse<UserResponse>>builder()
+                .result(userService.getUser(page, pageSize, sortBy))
                 .build();
     }
 

@@ -1,7 +1,6 @@
 package com.service.medicine.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.service.medicine.dto.response.PageResponse;
 
 import com.service.medicine.dto.request.UserCreationRequest;
 import com.service.medicine.dto.request.UserUpdateRequest;
@@ -10,7 +9,7 @@ import com.service.medicine.dto.response.UserResponse;
 public interface UserService {
     UserResponse createUser(UserCreationRequest request);
 
-    Page<UserResponse> getUser(Pageable pageable);
+    PageResponse<UserResponse> getUser(int page, int pageSize, String sortBy);
 
     UserResponse getMyInfo();
 

@@ -1,7 +1,9 @@
 package com.service.medicine.service.impl;
 
-import org.springframework.data.domain.Page;
+import com.service.medicine.dto.response.PageResponse;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.service.medicine.dto.request.ProductRequest;
@@ -19,6 +21,9 @@ import com.service.medicine.service.ProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -45,9 +50,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductResponse> getAllMedicine(Pageable pageable) {
-        Page<Product> products = productRepository.findAll(pageable);
-        return products.map(subProductMapper::productResponseMapperSub);
+    public PageResponse<ProductResponse> getAllMedicine(String keyword, String category, int page, int pageSize, String sortBy) {
+        Pageable pageable = PageRequest.of(page-1, pageSize, Sort.by(sortBy));
+        var products = productRepository.findAllByKeywords(pageable, keyword, category);
+        List<ProductResponse> productResponses = new ArrayList<>();
+        for(Product product : products){
+            productResponses.add(subProductMapper.productResponseMapperSub(product));
+        }
+        return PageResponse.<ProductResponse>builder()
+                .currentPage(page)
+                .pageSize(products.getSize())
+                .totalPages(products.getTotalPages())
+                .totalElement(products.getTotalElements())
+                .data(productResponses)
+                .build();
     }
 
     @Override

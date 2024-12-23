@@ -1,10 +1,14 @@
 
- 	java:S116 "^Rename this field "DEFAULT_PAGE_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¸Ïó8ßœ«Ùš2J$15d8769f-4484-441f-b172-610f637852c8
-£	java:S116!"\Rename this field "DEFAULT_PAGE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¢üøÿÿÿÿ8éœ«Ùš2J$106447ae-58a6-4228-be50-54ca66046fd0
-›	java:S116""ZRename this field "DEFAULT_SORT_BY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óà³z8éœ«Ùš2J$aafd58df-9cf2-48ec-a798-435fa1e8524e
-d
-java:S1170 "!Make this final field static too.(Ÿ¸Ïó8éœ«Ùš2J$9bcb2531-613c-4800-a14b-9950b96381c6
+¥	java:S116!"^Rename this field "DEFAULT_PAGE_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¡Æ®şÿÿÿÿ8ßœ«Ùš2J$70f61c1c-cf20-4998-9a25-20fb04c93b30
+	java:S116""\Rename this field "DEFAULT_PAGE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ÆÉ8éœ«Ùš2J$58485ce2-a655-47cd-8378-e7733bc935fc
+›	java:S116#"ZRename this field "DEFAULT_SORT_BY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óà³z8éœ«Ùš2J$2c966578-303e-45e8-803e-fc1ca365facb
 i
-java:S1170!"!Make this final field static too.(€¢üøÿÿÿÿ8éœ«Ùš2J$06da431d-efc4-4ddb-8783-b02a70da5cba
+java:S1170!"!Make this final field static too.(€¡Æ®şÿÿÿÿ8éœ«Ùš2J$001b6965-229b-45fa-9f12-3301b65ee675
+d
+java:S1170""!Make this final field static too.(¤ÆÉ8éœ«Ùš2J$6b351379-a2f1-415a-8906-0b4fd271103a
 c
-java:S1170""!Make this final field static too.(óà³z8éœ«Ùš2J$61f8fd1a-1297-4168-b2af-94d25db3653c
+java:S1170#"!Make this final field static too.(óà³z8éœ«Ùš2J$c34eaa8c-eb85-4c2c-86a0-c609a1dd9613
+
+java:S18547"<Remove this useless assignment to local variable "pageable".(Ó©ËÅ8êÉ×€»2J$19160c5f-b8b2-4a93-83fd-fd4777b6f1d7
+p
+java:S14817"-Remove this unused "pageable" local variable.(Ó©ËÅ8ûÉ×€»2J$ba989aa9-79a6-4719-929d-7ccb28320214
