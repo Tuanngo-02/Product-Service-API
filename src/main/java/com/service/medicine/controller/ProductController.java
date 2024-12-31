@@ -1,11 +1,7 @@
 package com.service.medicine.controller;
 
 import com.service.medicine.dto.response.PageResponse;
-import com.service.medicine.model.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import com.service.medicine.dto.request.ProductRequest;
@@ -17,6 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/products")
@@ -30,11 +27,21 @@ public class ProductController {
 
     @Operation(summary = "Add new product", description = "Send a request via this API to add new product")
     @PostMapping
-    ApiResponse<ProductResponse> createMedicine(@RequestBody ProductRequest request) {
+    ApiResponse<ProductResponse> createMedicine(@RequestBody ProductRequest request) throws Exception {
         return ApiResponse.<ProductResponse>builder()
                 .result(medicineService.createMedicine(request))
                 .build();
     }
+
+    @PostMapping(value = "/image/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Upload an image into product by ID", description = "Insert an image into a product by ID product")
+    public ApiResponse<ProductResponse> uploadImage(@PathVariable Long id, @RequestPart("file") MultipartFile file) throws Exception {
+        return ApiResponse.<ProductResponse>builder()
+                .result(medicineService.uploadImage(id, file))
+                .build();
+    }
+
+
 
     @Operation(
             summary = "Get list of products per page, search by name product or category",

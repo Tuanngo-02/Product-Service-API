@@ -23,6 +23,8 @@ public class SubProductMapper {
             productResponse.setCategory(null);
         }
         productResponse.setDob(product.getDob());
+        productResponse.setImageUrl(product.getImageUrl());
+        productResponse.setCloudinaryImageId(product.getCloudinaryImageId());
         return productResponse;
     }
 

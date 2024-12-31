@@ -32,8 +32,10 @@ public enum ErrorCode {
 
     UNAUTHENTICATED(1006, "Unauthenticated", HttpStatus.UNAUTHORIZED), // lỗi 401
 
-    UNAUTHORIZED(1007, "You do not have permission", HttpStatus.FORBIDDEN) // lỗi 403,
-;
+    UNAUTHORIZED(1007, "You do not have permission", HttpStatus.FORBIDDEN), // lỗi 403
+
+    FILE_SIZE(1008,"Max file size is 5MB",HttpStatus.BAD_REQUEST ),
+    ALLOWED_FILE_FORMAT(1009,"Only jpg, png, gif, bmp files are allowed" ,HttpStatus.BAD_REQUEST );
 
     ErrorCode(int code, String message, HttpStatusCode status) {
         this.code = code;

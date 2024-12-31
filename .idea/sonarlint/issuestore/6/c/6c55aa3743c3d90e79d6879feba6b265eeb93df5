@@ -1,20 +1,10 @@
 
-¥	java:S116"^Rename this field "DEFAULT_PAGE_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¡Æ®şÿÿÿÿ8€Ú€Áš2J$f5a0d3de-300c-4fb2-b446-7ce74bced165
-	java:S116"\Rename this field "DEFAULT_PAGE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ÆÉ8‚Ú€Áš2J$6d78c201-e7b5-46e8-b05f-a32ef271d1b8
-œ	java:S116"ZRename this field "DEFAULT_SORT_BY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¬ò‹8“ì‚€»2J$3fb7b59c-c7a2-4c40-b6ad-ee3a66e3b034
+¥	java:S116"^Rename this field "DEFAULT_PAGE_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¡Æ®şÿÿÿÿ8®Û˜êÁ2J$6fe0e9c8-ca9e-41a1-be78-0fbdf83dfd43
+	java:S116"\Rename this field "DEFAULT_PAGE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ÆÉ8¯Û˜êÁ2J$4654fae1-069e-4f07-b302-6411073992af
+œ	java:S116"ZRename this field "DEFAULT_SORT_BY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¬ò‹8¯Û˜êÁ2J$d3ffdc64-6d39-4812-a7c4-7b68fe0cb850
 i
-java:S1170"!Make this final field static too.(€¡Æ®şÿÿÿÿ8„Ú€Áš2J$661cf166-d9c9-417d-b03e-41e5809532fe
+java:S1170"!Make this final field static too.(€¡Æ®şÿÿÿÿ8±Û˜êÁ2J$e43b51aa-d035-468c-87bb-2caaa98a2baa
 d
-java:S1170"!Make this final field static too.(¤ÆÉ8„Ú€Áš2J$e8abd6ab-2ad5-4adb-9364-993042b02bae
+java:S1170"!Make this final field static too.(¤ÆÉ8±Û˜êÁ2J$a74bfe16-c226-41d0-b657-8c7fb73c8089
 d
-java:S1170"!Make this final field static too.(Ø¬ò‹8“ì‚€»2J$b5affd76-1fac-4036-92e5-c0bca6fa31ae
-‡
-java:S1128"?Remove this unused import 'com.service.medicine.model.Product'.(µæÒøÿÿÿÿ8íÏø»2J$f38651b6-87a0-4a11-931a-43b1629787af
-‰
-java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8îÏø»2J$79e89236-175e-48d4-97da-a1a78c2d2ace
-‹
-java:S1128"HRemove this unused import 'org.springframework.data.domain.PageRequest'.(ºêâÚ8îÏø»2J$96413b1a-5b97-4543-afa7-07b007122f2e
-
-java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8îÏø»2J$3f3dc4d9-6590-41a2-bbaf-b4435664bcdd
-‰
-java:S1128"ARemove this unused import 'org.springframework.data.domain.Sort'.(ëÿ€ëøÿÿÿÿ8îÏø»2J$e92aadbf-c872-4418-8c84-a280dd976a78
+java:S1170"!Make this final field static too.(Ø¬ò‹8±Û˜êÁ2J$a2f75a15-3ca3-493d-ba18-cbdde6558dfe

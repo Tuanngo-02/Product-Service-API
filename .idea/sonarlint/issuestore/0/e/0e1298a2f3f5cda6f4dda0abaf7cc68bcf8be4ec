@@ -1,7 +1,9 @@
 
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(”Ì«§ıÿÿÿÿ8µèöÁ2J$44b36e55-af9c-4905-93fa-5c42ba3a107c
+ˆ	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(öĞÄ„8“Ó¡ªÁ2J$acb004a1-f0bd-4ba2-83d4-c5f4142a0e01
 ‡
-java:S1128"?Remove this unused import 'com.service.medicine.model.Product'.(µæÒøÿÿÿÿ8­¡¨»2J$e30993a9-72a5-4f9f-be42-93f3d16c2d55
+java:S1128"?Remove this unused import 'com.service.medicine.model.Product'.(µæÒøÿÿÿÿ8Áá¬Á2J$477a2ba2-84e5-456f-980b-8ed176a0f66d
 ‰
-java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8­¡¨»2J$0d98eae6-48f2-4b78-8735-bd0361f73c05
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8Áá¬Á2J$8f5349c6-f8a8-4b1c-aa56-d92f78780d6d
 
-java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8­¡¨»2J$44246747-76ba-4680-b911-f517f22e2f91
+java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8Áá¬Á2J$c87ec57a-db94-4b0d-8fbb-3d0ee0a1b2bf

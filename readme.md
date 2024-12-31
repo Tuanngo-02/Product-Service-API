@@ -14,6 +14,7 @@
 # Features:
 - Authentication, Authorization
 - CRUD
+- Upload an image into product by ID 
 - Validator (not null, format, check duplicate,...)
 - Paging and sorting
 - Ordering 

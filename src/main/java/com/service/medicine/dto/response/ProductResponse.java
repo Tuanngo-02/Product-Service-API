@@ -24,4 +24,8 @@ public class ProductResponse {
     String category;
 
     LocalDate dob;
+
+    String imageUrl;
+
+    String cloudinaryImageId;
 }

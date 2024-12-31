@@ -28,6 +28,9 @@ public class Product {
 
     LocalDate dob;
 
+    String imageUrl;
+
+    String cloudinaryImageId;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
