@@ -8,10 +8,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BillResponse {
-    int amount;
-    int invoiceNumber;
-    String date;
-    String orderDescription;
-    Long billId;
+public class VNPayResponse {
+    String message;
+    int totalAmount;
+    String bankCode;
+    String paymentUrl;
 }

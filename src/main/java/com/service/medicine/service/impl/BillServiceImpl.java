@@ -61,9 +61,9 @@ public class BillServiceImpl implements BillService {
         return bill.isPresent() ? bill.get() : null;
     }
 
-    public float getCartAmount(List<Cart> carts) {
-        float totalCartAmount = 0f;
-        float singleCartAmount = 0f;
+    public int getCartAmount(List<Cart> carts) {
+        int totalCartAmount = 0;
+        int singleCartAmount = 0 ;
         int availableQuantity = 0;
         for (Cart cart : carts) {
             Long medicineId = cart.getMedicineId();
@@ -88,10 +88,10 @@ public class BillServiceImpl implements BillService {
         return totalCartAmount;
     }
 
-    public float getCartAmountAfterUpdate(List<Cart> newCartItems, String userId) {
+    public int getCartAmountAfterUpdate(List<Cart> newCartItems, String userId) {
         int availableQuantity = 0;
-        float singleCartAmount = 0f;
-        float totalCartAmount = 0f;
+        int singleCartAmount = 0;
+        int totalCartAmount = 0;
         int x = 0;
         Optional<Bill> bill1 = billReponsitory.findByUserId(userId);
         for (Cart cart : newCartItems) {

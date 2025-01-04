@@ -15,7 +15,7 @@ public class ProductResponse {
 
     String name;
 
-    float price;
+    int price;
 
     int availableQuantity;
 

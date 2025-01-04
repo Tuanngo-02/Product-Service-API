@@ -20,7 +20,7 @@ public class Product {
 
     String name;
 
-    float price;
+    int price;
 
     int availableQuantity;
 

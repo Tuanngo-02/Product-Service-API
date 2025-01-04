@@ -19,6 +19,7 @@
 - Paging and sorting
 - Ordering 
 - Check quantity in product when ordering
+- Payment via API gateway VNPay 
 
 # How to run
 - Clone this repository

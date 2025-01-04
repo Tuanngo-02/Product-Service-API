@@ -21,6 +21,16 @@ cloudinary:
 open:
   api:
     title: E-commerce_Service API Document
+payment:
+  vnPay:
+    url: "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"
+    tmnCode: "LM9Y0P0D"
+    secretKey: "CPES1VHEV2VRI4ZA9GK3DHZU2TSCKX9V"
+    returnUrl: "http://localhost:8080/medicine/payment/vn-pay-callback"
+    version: "2.1.0"
+    command: "pay"
+    orderType: "other"
+
 
 
 

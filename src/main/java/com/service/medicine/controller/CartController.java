@@ -59,10 +59,10 @@ public class CartController {
             description = "Send a request via this API to create new order" + "Please input ID product and quantity")
     @PostMapping("/placeBill")
     public ApiResponse<BillResponse> placeBill(@RequestBody BillRequest request) {
-        float amount = billService.getCartAmount(request.getCartItems());
+        int amount = billService.getCartAmount(request.getCartItems());
         UserResponse userResponse = userService.getMyInfo();
         User user = User.builder().id(userResponse.getId()).build();
-        Bill bill = new Bill(request.getOrderDescription(), user, request.getCartItems());
+        Bill bill = new Bill(request.getOrderDescription()+ " belong to " + userResponse.getUsername(), user, request.getCartItems(), amount);
         bill = billService.saveBill(bill);
         log.info("Order processed successfully..");
         return ApiResponse.<BillResponse>builder()
@@ -71,7 +71,7 @@ public class CartController {
                         .date(String.valueOf(new Date()))
                         .invoiceNumber(new Random().nextInt(1000))
                         .billId(bill.getId())
-                        .orderDescription(request.getOrderDescription() + " belong to " + userResponse.getUsername())
+                        .orderDescription(bill.getOrderDescription())
                         .build())
                 .build();
     }
@@ -82,7 +82,7 @@ public class CartController {
     @PutMapping("/{userId}")
     public ApiResponse<BillResponse> updateBill(@PathVariable String userId, @RequestBody BillRequest request) {
         UserResponse userResponse = userService.getMyInfo();
-        float amount = billService.getCartAmountAfterUpdate(request.getCartItems(), userId);
+        int amount = billService.getCartAmountAfterUpdate(request.getCartItems(), userId);
 
         return ApiResponse.<BillResponse>builder()
                 .result(BillResponse.builder()

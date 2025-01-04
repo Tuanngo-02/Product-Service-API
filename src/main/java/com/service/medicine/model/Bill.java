@@ -35,9 +35,12 @@ public class Bill {
     // @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bill")
     List<Cart> cartItems;
 
-    public Bill(String orderDescription, User user, List<Cart> cartItems) {
+    int totalAmount;
+
+    public Bill(String orderDescription, User user, List<Cart> cartItems, int totalAmount) {
         this.orderDescription = orderDescription;
         this.user = user;
         this.cartItems = cartItems;
+        this.totalAmount = totalAmount;
     }
 }

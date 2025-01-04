@@ -16,10 +16,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-    private static final String[] PUBLIC_ENDPOINS_POST = {
+    private static final String[] PUBLIC_ENDPOINTS_POST = {
         "/users", "/auth/login", "/roles", "/auth/logout", "/auth/introspect", "auth/refresh"
     };
-    private static final String[] PUBLIC_ENDPOINS_GET = {"/products"};
+    private static final String[] PUBLIC_ENDPOINTS_GET = {"/products", "/payment/vn-pay-callback"};
 
     @Value("${jwt.signerKey}")
     private String singerKey;
@@ -32,9 +32,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINS_POST)
+        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS_POST)
                 .permitAll() // cho phép truy cập
-                .requestMatchers(HttpMethod.GET, PUBLIC_ENDPOINS_GET)
+                .requestMatchers(HttpMethod.GET, PUBLIC_ENDPOINTS_GET)
                 .permitAll()
                 .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**")
                 .permitAll()

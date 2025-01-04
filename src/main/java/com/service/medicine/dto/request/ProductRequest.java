@@ -19,7 +19,7 @@ public class ProductRequest {
     String name;
 
     @NotBlank(message = "NONE_EMPTY")
-    float price;
+    int price;
 
     int availableQuantity;
 
